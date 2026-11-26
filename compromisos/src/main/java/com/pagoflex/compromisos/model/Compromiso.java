@@ -5,6 +5,8 @@ import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -48,8 +50,9 @@ public class Compromiso {
     @Column(name = "fecha_vencimiento", nullable = false)
     private LocalDate fechaVencimiento;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "id_estado_compromiso", nullable = false)
-    private Long estadoId;
+    private EstadoCompromiso estado;
 
     @Column(name = "recargo_aplicado", nullable = false)
     private int recargoAplicado;

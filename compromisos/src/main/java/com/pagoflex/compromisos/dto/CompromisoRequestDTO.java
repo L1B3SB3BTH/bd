@@ -20,8 +20,6 @@ public class CompromisoRequestDTO {
 
     private LocalDate fechaVencimiento;
 
-    private Long estadoId;
-
     private int recargoAplicado;
 
     private Long ejecutivoId;

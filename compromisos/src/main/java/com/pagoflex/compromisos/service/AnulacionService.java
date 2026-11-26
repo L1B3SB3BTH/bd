@@ -10,6 +10,7 @@ import com.pagoflex.compromisos.dto.AnulacionResponseDTO;
 import com.pagoflex.compromisos.mapper.AnulacionMapper;
 import com.pagoflex.compromisos.model.Anulacion;
 import com.pagoflex.compromisos.model.Compromiso;
+import com.pagoflex.compromisos.model.EstadoCompromiso;
 import com.pagoflex.compromisos.repository.AnulacionRepository;
 import com.pagoflex.compromisos.repository.CompromisoRepository;
 
@@ -34,6 +35,10 @@ public class AnulacionService {
 
     public AnulacionResponseDTO crear(AnulacionRequestDTO request){
         Compromiso compromiso = compromisoRepository.findById(request.getCompromisoId()).orElseThrow(() -> new RuntimeException("No existe ese compromiso."));
+
+        if(compromiso.getEstado() == EstadoCompromiso.PAGADO){
+            throw new RuntimeException("El compromiso ya esta anulado");
+        }
 
         Anulacion anulacion = mapper.toEntity(request);
 

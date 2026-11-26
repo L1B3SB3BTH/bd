@@ -13,6 +13,7 @@ import com.pagoflex.compromisos.dto.EmpresaResponseDTO;
 import com.pagoflex.compromisos.dto.UsuarioResponseDTO;
 import com.pagoflex.compromisos.mapper.CompromisoMapper;
 import com.pagoflex.compromisos.model.Compromiso;
+import com.pagoflex.compromisos.model.EstadoCompromiso;
 import com.pagoflex.compromisos.repository.CompromisoRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -72,7 +73,7 @@ public class CompromisoService {
         compromiso.setTotalCuotas(request.getTotalCuotas());
         compromiso.setMonto(request.getMonto());
         compromiso.setFechaVencimiento(request.getFechaVencimiento());
-        compromiso.setEstadoId(request.getEstadoId());
+        compromiso.setEstado(EstadoCompromiso.PENDIENTE);
         compromiso.setRecargoAplicado(request.getRecargoAplicado());
         compromiso.setEjecutivoId(request.getEjecutivoId());
 
